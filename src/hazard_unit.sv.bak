@@ -1,0 +1,21 @@
+module hazard_unit(
+    input [4:0] br_selE, rs1_addrE, rs2_addrE, rd_addrM, rd_wrenM, rd_addrW, rd_wrenW,
+    output flushD, flushE,
+    output [1:0] forward1sel, forward2sel
+);
+
+    always_comb begin
+        forward1sel = 2'b00;
+        forward2sel = 2'b00;
+        if (rs1_addrE != 5'b0)
+            if      ((rs1_addrE == rd_addrM) & rd_wrenM) forward1sel = 2'b01;
+            else if ((rs1_addrE == rd_addrW) & rd_wrenW) forward1sel = 2'b10;
+        if (rs2_addrE != 5'b0)
+            if      ((rs2_addrE == rd_addrM) & rd_wrenM) forward2sel = 2'b01;
+            else if ((rs2_addrE == rd_addrW) & rd_wrenW) forward2sel = 2'b10;
+    end
+
+    assign flushD = br_selE;
+    assign flushE = br_selE;
+
+endmodule

@@ -1,0 +1,193 @@
+addi x10, x0,  -2048   /* HEX0 */
+addi x11, x0,  -2032   /* HEX1 */
+addi x12, x0,  -2016   /* HEX2 */
+addi x13, x0,  -2000   /* HEX3 */
+addi x14, x0,  -1984   /* HEX4 */
+addi x15, x0,  -1968   /* HEX5 */
+addi x16, x0,  -1952   /* HEX6 */
+addi x17, x0,  -1936   /* HEX7 */
+addi x18, x0,  -1920   /* LEDR */
+addi x19, x0,  -1904   /* LEDG */
+addi x20, x0,  -1888   /* LCD  */
+addi x21, x0,  -1792   /* SW   */
+
+addi x2,  x0,   63     /* 0 */
+sb   x2,        0(x0)
+addi x2,  x0,   6      /* 1 */
+sb   x2,        4(x0)
+addi x2,  x0,   91     /* 2 */
+sb   x2,        8(x0)
+addi x2,  x0,   79     /* 3 */
+sb   x2,        12(x0)
+addi x2,  x0,   102    /* 4 */
+sb   x2,        16(x0)
+addi x2,  x0,   109    /* 5 */
+sb   x2,        20(x0)
+addi x2,  x0,   125    /* 6 */
+sb   x2,        24(x0)
+addi x2,  x0,   7      /* 7 */
+sb   x2,        28(x0)
+addi x2,  x0,   127    /* 8 */
+sb   x2,        32(x0)
+addi x2,  x0,   111    /* 9 */
+sb   x2,        36(x0)
+addi x2,  x0,   119    /* A */
+sb   x2,        40(x0)
+addi x2,  x0,   124    /* b */
+sb   x2,        44(x0)
+addi x2,  x0,   57     /* C */
+sb   x2,        48(x0)
+addi x2,  x0,   94     /* d */
+sb   x2,        52(x0)
+addi x2,  x0,   121    /* E */
+sb   x2,        56(x0)
+addi x2,  x0,   113    /* F */
+sb   x2,        60(x0)
+
+lui  x3,        524288 /* Turn on the LCD */
+addi x3,  x3,   1080   /* 8-bit, 2-line mode, E = 1 */
+sw   x3,        0(x20) /* Send to LCD */
+
+addi x3,  x0,   56     /* 8-bit, 2-line mode, E = 0 */
+sh   x3,        0(x20)
+
+addi x3,  x0,   1036   /* Cursor off, E = 1 */
+sh   x3,        0(x20)
+
+addi x3,  x0,   12     /* Cursor off, E = 0 */
+sh   x3,        0(x20)
+
+/* Set LEDG to show 101010101 */
+addi x2,  x0,   341
+sh   x2,        0(x19)
+
+/* Set HEX to display 01234567 */
+lb   x2,        0(x0)
+sb   x2,        0(x17)
+lb   x2,        4(x0)
+sb   x2,        0(x16)
+lb   x2,        8(x0)
+sb   x2,        0(x15)
+lb   x2,        12(x0)
+sb   x2,        0(x14)
+lb   x2,        16(x0)
+sb   x2,        0(x13)
+lb   x2,        20(x0)
+sb   x2,        0(x12)
+lb   x2,        24(x0)
+sb   x2,        0(x11)
+lb   x2,        28(x0)
+sb   x2,        0(x10)
+
+addi x3,  x0,   1025   /* Clear display, E = 1 */
+sh   x3,        0(x20)
+
+addi x3,  x0,   1      /* Clear display, E = 0 */
+sh   x3,        0(x20)
+
+addi x5,  x0,   1584
+addi x6,  x0,   560
+
+addi x4,  x0,   16
+firstrow:
+
+add  x3,  x0,   x5     /* Print ASCII, E = 1 */
+sh   x3,        0(x20)
+
+add  x3,  x0,   x6     /* Print ASCII, E = 0 */
+sh   x3,        0(x20)
+
+addi x5,  x5,   1
+addi x6,  x6,   1
+addi x4,  x4,  -1
+bne  x4,  x0,   firstrow
+
+addi x3,  x0,   1216   /* Set cursor, E = 1 */
+sh   x3,        0(x20)
+
+addi x3,  x0,   192    /* Set cursor, E = 0 */
+sh   x3,        0(x20)
+
+addi x4,  x0,   16
+secondrow:
+
+add  x3,  x0,   x5     /* Print ASCII, E = 1 */
+sh   x3,        0(x20)
+
+add  x3,  x0,   x6     /* Print ASCII, E = 0 */
+sh   x3,        0(x20)
+
+addi x5,  x5,   1
+addi x6,  x6,   1
+addi x4,  x4,  -1
+bne  x4,  x0,   secondrow
+
+/* Set LEDG to show 010101010 */
+addi x2,  x0,   170
+sh   x2,        0(x19)
+
+/* Set LEDG to show 101010101 */
+addi x2,  x0,   341
+sh   x2,        0(x19)
+
+/* Set HEX to display 89AbCdEF */
+lb   x2,        32(x0)
+sb   x2,        0(x17)
+lb   x2,        36(x0)
+sb   x2,        0(x16)
+lb   x2,        40(x0)
+sb   x2,        0(x15)
+lb   x2,        44(x0)
+sb   x2,        0(x14)
+lb   x2,        48(x0)
+sb   x2,        0(x13)
+lb   x2,        52(x0)
+sb   x2,        0(x12)
+lb   x2,        56(x0)
+sb   x2,        0(x11)
+lb   x2,        60(x0)
+sb   x2,        0(x10)
+
+addi x3,  x0,   1025   /* Clear display, E = 1 */
+sh   x3,        0(x20)
+
+addi x3,  x0,   1      /* Clear display, E = 0 */
+sh   x3,        0(x20)
+
+addi x4,  x0,   16
+thirdrow:
+
+add  x3,  x0,   x5     /* Print ASCII, E = 1 */
+sh   x3,        0(x20)
+
+add  x3,  x0,   x6     /* Print ASCII, E = 0 */
+sh   x3,        0(x20)
+
+addi x5,  x5,   1
+addi x6,  x6,   1
+addi x4,  x4,  -1
+bne  x4,  x0,   thirdrow
+
+addi x3,  x0,   1216   /* Set cursor, E = 1 */
+sh   x3,        0(x20)
+
+addi x3,  x0,   192    /* Set cursor, E = 0 */
+sh   x3,        0(x20)
+
+addi x4,  x0,   16
+fourthrow:
+
+add  x3,  x0,   x5     /* Print ASCII, E = 1 */
+sh   x3,        0(x20)
+
+add  x3,  x0,   x6     /* Print ASCII, E = 0 */
+sh   x3,        0(x20)
+
+addi x5,  x5,   1
+addi x6,  x6,   1
+addi x4,  x4,  -1
+bne  x4,  x0,   fourthrow
+
+/* Set LEDG to show 111111111 */
+addi x2,  x0,   511
+sh   x2,        0(x19)

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="singlecycle">
+		<CBX_INST_ENTRY INSTANCE_NAME="|wrapper|singlecycle:riscv32i|lsu:usl|datamem:dmem|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_c3i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|wrapper|singlecycle:riscv32i|lsu:usl|inmem:imem|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_r1i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|wrapper|singlecycle:riscv32i|lsu:usl|outmem:omem|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_r1i1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

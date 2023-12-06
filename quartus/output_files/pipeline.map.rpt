@@ -1,0 +1,1181 @@
+Analysis & Synthesis report for pipeline
+Wed Dec 06 23:02:37 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Registers Packed Into Inferred Megafunctions
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component|altsyncram_c3i1:auto_generated
+ 17. Source assignments for pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated
+ 18. Source assignments for pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated
+ 19. Source assignments for pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|altsyncram_7461:altsyncram4
+ 20. Parameter Settings for User Entity Instance: pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component
+ 21. Parameter Settings for User Entity Instance: pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component
+ 23. Parameter Settings for Inferred Entity Instance: pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. altshift_taps Parameter Settings by Entity Instance
+ 26. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:lcd"
+ 27. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:ledg"
+ 28. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:ledr"
+ 29. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex7"
+ 30. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex6"
+ 31. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex5"
+ 32. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex4"
+ 33. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex3"
+ 34. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex2"
+ 35. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex1"
+ 36. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex0"
+ 37. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|inmem:imem"
+ 38. Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|latch32_cp:sw"
+ 39. Port Connectivity Checks: "pipeline:rv32i"
+ 40. Elapsed Time Per Partition
+ 41. Analysis & Synthesis Messages
+ 42. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Dec 06 23:02:37 2023           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; pipeline                                        ;
+; Top-level Entity Name              ; wrapper                                         ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 4,595                                           ;
+;     Total combinational functions  ; 3,422                                           ;
+;     Dedicated logic registers      ; 1,511                                           ;
+; Total registers                    ; 1511                                            ;
+; Total pins                         ; 118                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 20,516                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; wrapper            ; pipeline           ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                     ;
++--------------------------------------------------------------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                                                       ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                           ; Library ;
++--------------------------------------------------------------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------+---------+
+; wrapper.sv                                                                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/wrapper.sv             ;         ;
+; ../src/reg_fetch_decode.sv                                                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/reg_fetch_decode.sv        ;         ;
+; ../src/reg_decode_execute.sv                                                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/reg_decode_execute.sv      ;         ;
+; ../src/reg_execute_memory.sv                                                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/reg_execute_memory.sv      ;         ;
+; ../src/reg_memory_writeback.sv                                                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/reg_memory_writeback.sv    ;         ;
+; ../src/forward1mux.sv                                                                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/forward1mux.sv             ;         ;
+; ../src/forward2mux.sv                                                                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/forward2mux.sv             ;         ;
+; ../src/rs1d_mux.sv                                                                                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/rs1d_mux.sv                ;         ;
+; ../src/rs2d_mux.sv                                                                                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/rs2d_mux.sv                ;         ;
+; ../src/hazard_unit.sv                                                                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/hazard_unit.sv             ;         ;
+; ../src/datamem.v                                                                                       ; yes             ; User Wizard-Generated File   ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/datamem.v                  ;         ;
+; ../src/outmem.v                                                                                        ; yes             ; User Wizard-Generated File   ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/outmem.v                   ;         ;
+; ../src/inmem.v                                                                                         ; yes             ; User Wizard-Generated File   ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/inmem.v                    ;         ;
+; ../src/instr_rom.v                                                                                     ; yes             ; User Verilog HDL File        ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/instr_rom.v                ;         ;
+; ../src/wb_mux.sv                                                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/wb_mux.sv                  ;         ;
+; ../src/pipeline.sv                                                                                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/pipeline.sv                ;         ;
+; ../src/regfile.sv                                                                                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/regfile.sv                 ;         ;
+; ../src/reg_dec.sv                                                                                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/reg_dec.sv                 ;         ;
+; ../src/pc_reg.sv                                                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/pc_reg.sv                  ;         ;
+; ../src/op_b_mux.sv                                                                                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/op_b_mux.sv                ;         ;
+; ../src/op_a_mux.sv                                                                                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/op_a_mux.sv                ;         ;
+; ../src/lsu.sv                                                                                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/lsu.sv                     ;         ;
+; ../src/immGen.sv                                                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/immGen.sv                  ;         ;
+; ../src/ctrl_unit.sv                                                                                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/ctrl_unit.sv               ;         ;
+; ../src/brcomp.sv                                                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/brcomp.sv                  ;         ;
+; ../src/br_mux.sv                                                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/br_mux.sv                  ;         ;
+; ../src/alu.sv                                                                                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/alu.sv                     ;         ;
+; ../src/add4.sv                                                                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/add4.sv                    ;         ;
+; /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/mem/all_test.mem ; yes             ; Auto-Found Unspecified File  ; /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/mem/all_test.mem                 ;         ;
+; altsyncram.tdf                                                                                         ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                                                       ;         ;
+; stratix_ram_block.inc                                                                                  ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                ;         ;
+; lpm_mux.inc                                                                                            ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                                                          ;         ;
+; lpm_decode.inc                                                                                         ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                                                       ;         ;
+; aglobal130.inc                                                                                         ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                                       ;         ;
+; a_rdenreg.inc                                                                                          ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                                                        ;         ;
+; altrom.inc                                                                                             ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                                                           ;         ;
+; altram.inc                                                                                             ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                                                           ;         ;
+; altdpram.inc                                                                                           ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                                                         ;         ;
+; db/altsyncram_c3i1.tdf                                                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/altsyncram_c3i1.tdf ;         ;
+; db/altsyncram_r1i1.tdf                                                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/altsyncram_r1i1.tdf ;         ;
+; altshift_taps.tdf                                                                                      ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altshift_taps.tdf                                                    ;         ;
+; lpm_counter.inc                                                                                        ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_counter.inc                                                      ;         ;
+; lpm_compare.inc                                                                                        ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_compare.inc                                                      ;         ;
+; lpm_constant.inc                                                                                       ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_constant.inc                                                     ;         ;
+; db/shift_taps_ofm.tdf                                                                                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/shift_taps_ofm.tdf  ;         ;
+; db/altsyncram_7461.tdf                                                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/altsyncram_7461.tdf ;         ;
+; db/add_sub_gvd.tdf                                                                                     ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/add_sub_gvd.tdf     ;         ;
+; db/cntr_kkf.tdf                                                                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/cntr_kkf.tdf        ;         ;
+; db/cmpr_6cc.tdf                                                                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/cmpr_6cc.tdf        ;         ;
+; db/cntr_74h.tdf                                                                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/cntr_74h.tdf        ;         ;
++--------------------------------------------------------------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimated Total logic elements              ; 4,595    ;
+;                                             ;          ;
+; Total combinational functions               ; 3422     ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 2704     ;
+;     -- 3 input functions                    ; 541      ;
+;     -- <=2 input functions                  ; 177      ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 3252     ;
+;     -- arithmetic mode                      ; 170      ;
+;                                             ;          ;
+; Total registers                             ; 1511     ;
+;     -- Dedicated logic registers            ; 1511     ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 118      ;
+; Total memory bits                           ; 20516    ;
+; Embedded Multiplier 9-bit elements          ; 0        ;
+; Maximum fan-out node                        ; CLOCK_50 ;
+; Maximum fan-out                             ; 1619     ;
+; Total fan-out                               ; 19658    ;
+; Average fan-out                             ; 3.81     ;
++---------------------------------------------+----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                   ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                      ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |wrapper                                        ; 3422 (1)          ; 1511 (0)     ; 20516       ; 0            ; 0       ; 0         ; 118  ; 0            ; |wrapper                                                                                                                                 ; work         ;
+;    |pipeline:rv32i|                             ; 3421 (0)          ; 1511 (0)     ; 20516       ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i                                                                                                                  ; work         ;
+;       |add4:plus4|                              ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|add4:plus4                                                                                                       ; work         ;
+;       |alu:al|                                  ; 679 (667)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|alu:al                                                                                                           ; work         ;
+;          |arith_right_shift:ars|                ; 12 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|alu:al|arith_right_shift:ars                                                                                     ; work         ;
+;       |br_mux:brsel|                            ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|br_mux:brsel                                                                                                     ; work         ;
+;       |brcomp:brc|                              ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|brcomp:brc                                                                                                       ; work         ;
+;       |ctrl_unit:cu|                            ; 57 (57)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|ctrl_unit:cu                                                                                                     ; work         ;
+;       |forward1mux:f1m|                         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|forward1mux:f1m                                                                                                  ; work         ;
+;       |forward2mux:f2m|                         ; 60 (60)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|forward2mux:f2m                                                                                                  ; work         ;
+;       |hazard_unit:hu|                          ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|hazard_unit:hu                                                                                                   ; work         ;
+;       |immGen:iG|                               ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|immGen:iG                                                                                                        ; work         ;
+;       |instr_rom:fetch_data|                    ; 468 (468)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|instr_rom:fetch_data                                                                                             ; work         ;
+;       |lsu:dmem|                                ; 139 (0)           ; 95 (0)       ; 20480       ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem                                                                                                         ; work         ;
+;          |addr_dec:ad|                          ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|addr_dec:ad                                                                                             ; work         ;
+;          |datamem:dmem|                         ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|datamem:dmem                                                                                            ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component                                                            ; work         ;
+;                |altsyncram_c3i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component|altsyncram_c3i1:auto_generated                             ; work         ;
+;          |inmem:imem|                           ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|inmem:imem                                                                                              ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component                                                              ; work         ;
+;                |altsyncram_r1i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated                               ; work         ;
+;          |latch32_cp:sw|                        ; 20 (20)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|latch32_cp:sw                                                                                           ; work         ;
+;          |ld_mux:loader|                        ; 20 (20)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|ld_mux:loader                                                                                           ; work         ;
+;          |ld_sel_mux:lsm|                       ; 77 (77)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|ld_sel_mux:lsm                                                                                          ; work         ;
+;          |outmem:omem|                          ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|outmem:omem                                                                                             ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component                                                             ; work         ;
+;                |altsyncram_r1i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated                              ; work         ;
+;          |reg32_cp:hex0|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex0                                                                                           ; work         ;
+;          |reg32_cp:hex1|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex1                                                                                           ; work         ;
+;          |reg32_cp:hex2|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex2                                                                                           ; work         ;
+;          |reg32_cp:hex3|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex3                                                                                           ; work         ;
+;          |reg32_cp:hex4|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex4                                                                                           ; work         ;
+;          |reg32_cp:hex5|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex5                                                                                           ; work         ;
+;          |reg32_cp:hex6|                        ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex6                                                                                           ; work         ;
+;          |reg32_cp:hex7|                        ; 2 (2)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:hex7                                                                                           ; work         ;
+;          |reg32_cp:lcd|                         ; 3 (3)             ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:lcd                                                                                            ; work         ;
+;          |reg32_cp:ledg|                        ; 2 (2)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:ledg                                                                                           ; work         ;
+;          |reg32_cp:ledr|                        ; 5 (5)             ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|lsu:dmem|reg32_cp:ledr                                                                                           ; work         ;
+;       |op_a_mux:oam|                            ; 86 (86)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|op_a_mux:oam                                                                                                     ; work         ;
+;       |op_b_mux:obm|                            ; 36 (36)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|op_b_mux:obm                                                                                                     ; work         ;
+;       |pc_reg:fetch_address|                    ; 0 (0)             ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|pc_reg:fetch_address                                                                                             ; work         ;
+;       |reg_dec:regdec|                          ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_dec:regdec                                                                                                   ; work         ;
+;       |reg_decode_execute:execute|              ; 183 (174)         ; 144 (138)    ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_decode_execute:execute                                                                                       ; work         ;
+;          |altshift_taps:wb_selE_rtl_0|          ; 9 (0)             ; 6 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0                                                           ; work         ;
+;             |shift_taps_ofm:auto_generated|     ; 9 (2)             ; 6 (3)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated                             ; work         ;
+;                |altsyncram_7461:altsyncram4|    ; 0 (0)             ; 0 (0)        ; 36          ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|altsyncram_7461:altsyncram4 ; work         ;
+;                |cntr_74h:cntr5|                 ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|cntr_74h:cntr5              ; work         ;
+;                |cntr_kkf:cntr1|                 ; 5 (5)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|cntr_kkf:cntr1              ; work         ;
+;       |reg_execute_memory:memory|               ; 0 (0)             ; 142 (142)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_execute_memory:memory                                                                                        ; work         ;
+;       |reg_fetch_decode:decode|                 ; 24 (24)           ; 54 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_fetch_decode:decode                                                                                          ; work         ;
+;       |reg_memory_writeback:writeback|          ; 0 (0)             ; 72 (72)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|reg_memory_writeback:writeback                                                                                   ; work         ;
+;       |regfile:rf|                              ; 1329 (1329)       ; 992 (992)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|regfile:rf                                                                                                       ; work         ;
+;       |rs1d_mux:rd1m|                           ; 106 (106)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|rs1d_mux:rd1m                                                                                                    ; work         ;
+;       |rs2d_mux:rd2m|                           ; 105 (105)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|rs2d_mux:rd2m                                                                                                    ; work         ;
+;       |wb_mux:wbm|                              ; 44 (44)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |wrapper|pipeline:rv32i|wb_mux:wbm                                                                                                       ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                ;
++--------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
+; Name                                                                                                                                       ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF  ;
++--------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
+; pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component|altsyncram_c3i1:auto_generated|ALTSYNCRAM                             ; AUTO ; Single Port      ; 512          ; 32           ; --           ; --           ; 16384 ; None ;
+; pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated|ALTSYNCRAM                               ; AUTO ; Single Port      ; 64           ; 32           ; --           ; --           ; 2048  ; None ;
+; pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated|ALTSYNCRAM                              ; AUTO ; Single Port      ; 64           ; 32           ; --           ; --           ; 2048  ; None ;
+; pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|altsyncram_7461:altsyncram4|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 3            ; 12           ; 3            ; 12           ; 36    ; None ;
++--------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                 ;
++--------+--------------+---------+--------------+--------------+-----------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                               ; IP Include File                                                                                       ;
++--------+--------------+---------+--------------+--------------+-----------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |wrapper|pipeline:rv32i|lsu:dmem|datamem:dmem ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/datamem.v ;
+; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |wrapper|pipeline:rv32i|lsu:dmem|inmem:imem   ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/inmem.v   ;
+; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |wrapper|pipeline:rv32i|lsu:dmem|outmem:omem  ; C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/src/outmem.v  ;
++--------+--------------+---------+--------------+--------------+-----------------------------------------------+-------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                        ;
++-------------------------------------------------------+-------------------------------------------------------------------+
+; Register name                                         ; Reason for Removal                                                ;
++-------------------------------------------------------+-------------------------------------------------------------------+
+; pipeline:rv32i|pc_reg:fetch_address|pc[0]             ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_fetch_decode:decode|pcD[0]         ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_decode_execute:execute|pcE[0]      ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_fetch_decode:decode|pc4D[0]        ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_decode_execute:execute|pc4E[0]     ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_execute_memory:memory|pc4M[0]      ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_memory_writeback:writeback|pc4W[0] ; Stuck at GND due to stuck port data_in                            ;
+; pipeline:rv32i|reg_execute_memory:memory|mem_wrenM    ; Merged with pipeline:rv32i|reg_execute_memory:memory|byte_enM[0]  ;
+; pipeline:rv32i|reg_execute_memory:memory|byte_enM[3]  ; Merged with pipeline:rv32i|reg_execute_memory:memory|byte_enM[2]  ;
+; pipeline:rv32i|reg_decode_execute:execute|mem_wrenE   ; Merged with pipeline:rv32i|reg_decode_execute:execute|byte_enE[0] ;
+; pipeline:rv32i|reg_decode_execute:execute|byte_enE[3] ; Merged with pipeline:rv32i|reg_decode_execute:execute|byte_enE[2] ;
+; pipeline:rv32i|reg_decode_execute:execute|pcE[1]      ; Merged with pipeline:rv32i|reg_decode_execute:execute|pc4E[1]     ;
+; pipeline:rv32i|reg_fetch_decode:decode|pcD[1]         ; Merged with pipeline:rv32i|reg_fetch_decode:decode|pc4D[1]        ;
+; pipeline:rv32i|regfile:rf|registers[0][31]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][30]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][29]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][28]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][27]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][26]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][25]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][24]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][23]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][22]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][21]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][20]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][19]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][18]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][17]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][16]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][15]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][14]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][13]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][12]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][11]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][10]            ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][9]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][8]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][7]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][6]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][5]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][4]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][3]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][2]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][1]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|regfile:rf|registers[0][0]             ; Stuck at GND due to stuck port clock_enable                       ;
+; pipeline:rv32i|reg_fetch_decode:decode|instrD[0]      ; Merged with pipeline:rv32i|reg_fetch_decode:decode|instrD[1]      ;
+; Total Number of Removed Registers = 46                ;                                                                   ;
++-------------------------------------------------------+-------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                    ;
++-------------------------------------------+---------------------------+--------------------------------------------------------+
+; Register name                             ; Reason for Removal        ; Registers Removed due to This Register                 ;
++-------------------------------------------+---------------------------+--------------------------------------------------------+
+; pipeline:rv32i|pc_reg:fetch_address|pc[0] ; Stuck at GND              ; pipeline:rv32i|reg_fetch_decode:decode|pcD[0],         ;
+;                                           ; due to stuck port data_in ; pipeline:rv32i|reg_decode_execute:execute|pcE[0],      ;
+;                                           ;                           ; pipeline:rv32i|reg_fetch_decode:decode|pc4D[0],        ;
+;                                           ;                           ; pipeline:rv32i|reg_decode_execute:execute|pc4E[0],     ;
+;                                           ;                           ; pipeline:rv32i|reg_execute_memory:memory|pc4M[0],      ;
+;                                           ;                           ; pipeline:rv32i|reg_memory_writeback:writeback|pc4W[0], ;
+;                                           ;                           ; pipeline:rv32i|regfile:rf|registers[0][0]              ;
++-------------------------------------------+---------------------------+--------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1511  ;
+; Number of registers using Synchronous Clear  ; 58    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 1507  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1087  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                                                        ;
++-----------------------------------------------------------------------------------------------------------+---------+
+; Inverted Register                                                                                         ; Fan out ;
++-----------------------------------------------------------------------------------------------------------+---------+
+; pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|dffe6 ; 12      ;
+; Total number of inverted registers = 1                                                                    ;         ;
++-----------------------------------------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                                                     ;
++-----------------------------------------------------------+---------------------------------------------------------+------------+
+; Register Name                                             ; Megafunction                                            ; Type       ;
++-----------------------------------------------------------+---------------------------------------------------------+------------+
+; pipeline:rv32i|reg_memory_writeback:writeback|wb_selW[1]  ; pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0 ; SHIFT_TAPS ;
+; pipeline:rv32i|reg_execute_memory:memory|wb_selM[1]       ; pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0 ; SHIFT_TAPS ;
+; pipeline:rv32i|reg_decode_execute:execute|wb_selE[1]      ; pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0 ; SHIFT_TAPS ;
+; pipeline:rv32i|reg_memory_writeback:writeback|pc4W[2..12] ; pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0 ; SHIFT_TAPS ;
+; pipeline:rv32i|reg_execute_memory:memory|pc4M[2..12]      ; pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0 ; SHIFT_TAPS ;
+; pipeline:rv32i|reg_decode_execute:execute|pc4E[2..12]     ; pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0 ; SHIFT_TAPS ;
++-----------------------------------------------------------+---------------------------------------------------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|immE[31]   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|immE[13]   ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|br_selE    ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|immE[8]    ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|immE[4]    ;
+; 14:1               ; 2 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|ld_selE[2] ;
+; 28:1               ; 3 bits    ; 54 LEs        ; 54 LEs               ; 0 LEs                  ; Yes        ; |wrapper|pipeline:rv32i|reg_decode_execute:execute|rd_wrenE   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|forward2mux:f2m|forward2out[25]       ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|wb_mux:wbm|wb_data[21]                ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|wb_mux:wbm|wb_data[4]                 ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|lsu:dmem|ld_mux:loader|data_out[0]    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|rs1d_mux:rd1m|rs1d_out[17]            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|rs2d_mux:rd2m|rs2d_out[31]            ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|op_a_mux:oam|operand_a[0]             ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|op_a_mux:oam|operand_a[10]            ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|regfile:rf|Mux33                      ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |wrapper|pipeline:rv32i|regfile:rf|Mux24                      ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |wrapper|pipeline:rv32i|lsu:dmem|ld_sel_mux:lsm|ld_data[30]   ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |wrapper|pipeline:rv32i|ctrl_unit:cu|alu_op                   ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; No         ; |wrapper|pipeline:rv32i|lsu:dmem|ld_sel_mux:lsm|ld_data[12]   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component|altsyncram_c3i1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                           ;
++---------------------------------+--------------------+------+--------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                            ;
++---------------------------------+--------------------+------+--------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                          ;
++---------------------------------+--------------------+------+-------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                           ;
++---------------------------------+--------------------+------+-------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                         ;
++---------------------------------+--------------------+------+------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                          ;
++---------------------------------+--------------------+------+------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0|shift_taps_ofm:auto_generated|altsyncram_7461:altsyncram4 ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                       ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                        ;
++---------------------------------+--------------------+------+------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                  ;
++------------------------------------+----------------------+-------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                               ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                          ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                        ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                               ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                               ;
+; WIDTH_A                            ; 32                   ; Signed Integer                                        ;
+; WIDTHAD_A                          ; 9                    ; Signed Integer                                        ;
+; NUMWORDS_A                         ; 512                  ; Signed Integer                                        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                               ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                               ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                               ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                               ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                               ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                               ;
+; WIDTH_B                            ; 1                    ; Untyped                                               ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                               ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                               ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                               ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                               ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                               ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                               ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                               ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                               ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                               ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                               ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                               ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                               ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                               ;
+; WIDTH_BYTEENA_A                    ; 4                    ; Signed Integer                                        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                               ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                               ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                                        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                               ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                               ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                               ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                               ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                               ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                               ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                               ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                               ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                               ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                               ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                               ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                               ;
+; CBXI_PARAMETER                     ; altsyncram_c3i1      ; Untyped                                               ;
++------------------------------------+----------------------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                 ;
++------------------------------------+----------------------+------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                              ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                       ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                              ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                              ;
+; WIDTH_A                            ; 32                   ; Signed Integer                                       ;
+; WIDTHAD_A                          ; 6                    ; Signed Integer                                       ;
+; NUMWORDS_A                         ; 64                   ; Signed Integer                                       ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                              ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                              ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                              ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                              ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                              ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                              ;
+; WIDTH_B                            ; 1                    ; Untyped                                              ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                              ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                              ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                              ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                              ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                              ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                              ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                              ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                              ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                              ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                              ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                              ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                              ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                              ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                              ;
+; WIDTH_BYTEENA_A                    ; 4                    ; Signed Integer                                       ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                              ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                              ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                              ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                              ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                              ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                              ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                              ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                              ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                              ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                              ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                              ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                              ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                              ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                              ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                              ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                              ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                              ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                              ;
+; CBXI_PARAMETER                     ; altsyncram_r1i1      ; Untyped                                              ;
++------------------------------------+----------------------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-----------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                ;
++------------------------------------+----------------------+-----------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                             ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                          ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                        ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                        ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                      ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                             ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                             ;
+; WIDTH_A                            ; 32                   ; Signed Integer                                      ;
+; WIDTHAD_A                          ; 6                    ; Signed Integer                                      ;
+; NUMWORDS_A                         ; 64                   ; Signed Integer                                      ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                             ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                             ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                             ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                             ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                             ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                             ;
+; WIDTH_B                            ; 1                    ; Untyped                                             ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                             ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                             ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                             ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                             ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                             ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                             ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                             ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                             ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                             ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                             ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                             ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                             ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                             ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                             ;
+; WIDTH_BYTEENA_A                    ; 4                    ; Signed Integer                                      ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                             ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                             ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                                      ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                             ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                             ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                             ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                             ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                             ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                             ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                             ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                             ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                             ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                             ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                             ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                             ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                             ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                             ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                             ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                             ;
+; CBXI_PARAMETER                     ; altsyncram_r1i1      ; Untyped                                             ;
++------------------------------------+----------------------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0 ;
++----------------+----------------+--------------------------------------------------------------------------------------+
+; Parameter Name ; Value          ; Type                                                                                 ;
++----------------+----------------+--------------------------------------------------------------------------------------+
+; WIDTH_BYTEENA  ; 1              ; Untyped                                                                              ;
+; NUMBER_OF_TAPS ; 1              ; Untyped                                                                              ;
+; TAP_DISTANCE   ; 3              ; Untyped                                                                              ;
+; WIDTH          ; 12             ; Untyped                                                                              ;
+; POWER_UP_STATE ; CLEARED        ; Untyped                                                                              ;
+; CBXI_PARAMETER ; shift_taps_ofm ; Untyped                                                                              ;
++----------------+----------------+--------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                 ;
++-------------------------------------------+----------------------------------------------------------------------+
+; Name                                      ; Value                                                                ;
++-------------------------------------------+----------------------------------------------------------------------+
+; Number of entity instances                ; 3                                                                    ;
+; Entity Instance                           ; pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                          ;
+;     -- WIDTH_A                            ; 32                                                                   ;
+;     -- NUMWORDS_A                         ; 512                                                                  ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                         ;
+;     -- WIDTH_B                            ; 1                                                                    ;
+;     -- NUMWORDS_B                         ; 1                                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                            ;
+; Entity Instance                           ; pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component  ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                          ;
+;     -- WIDTH_A                            ; 32                                                                   ;
+;     -- NUMWORDS_A                         ; 64                                                                   ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                         ;
+;     -- WIDTH_B                            ; 1                                                                    ;
+;     -- NUMWORDS_B                         ; 1                                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                            ;
+; Entity Instance                           ; pipeline:rv32i|lsu:dmem|inmem:imem|altsyncram:altsyncram_component   ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                          ;
+;     -- WIDTH_A                            ; 32                                                                   ;
+;     -- NUMWORDS_A                         ; 64                                                                   ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                         ;
+;     -- WIDTH_B                            ; 1                                                                    ;
+;     -- NUMWORDS_B                         ; 1                                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                            ;
++-------------------------------------------+----------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; altshift_taps Parameter Settings by Entity Instance                                                ;
++----------------------------+-----------------------------------------------------------------------+
+; Name                       ; Value                                                                 ;
++----------------------------+-----------------------------------------------------------------------+
+; Number of entity instances ; 1                                                                     ;
+; Entity Instance            ; pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0 ;
+;     -- NUMBER_OF_TAPS      ; 1                                                                     ;
+;     -- TAP_DISTANCE        ; 3                                                                     ;
+;     -- WIDTH               ; 12                                                                    ;
++----------------------------+-----------------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:lcd" ;
++----------+-------+----------+------------------------------------+
+; Port     ; Type  ; Severity ; Details                            ;
++----------+-------+----------+------------------------------------+
+; B[10..8] ; Input ; Info     ; Stuck at GND                       ;
+; B[4..0]  ; Input ; Info     ; Stuck at GND                       ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                       ;
+; B[7]     ; Input ; Info     ; Stuck at VCC                       ;
+; B[6]     ; Input ; Info     ; Stuck at GND                       ;
+; B[5]     ; Input ; Info     ; Stuck at VCC                       ;
++----------+-------+----------+------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:ledg" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..8] ; Input ; Info     ; Stuck at GND                        ;
+; B[6..5]  ; Input ; Info     ; Stuck at GND                        ;
+; B[3..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[7]     ; Input ; Info     ; Stuck at VCC                        ;
+; B[4]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:ledr" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..8] ; Input ; Info     ; Stuck at GND                        ;
+; B[6..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[7]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex7" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[6..4]  ; Input ; Info     ; Stuck at VCC                        ;
+; B[10..7] ; Input ; Info     ; Stuck at GND                        ;
+; B[3..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex6" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[6..5]  ; Input ; Info     ; Stuck at VCC                        ;
+; B[10..7] ; Input ; Info     ; Stuck at GND                        ;
+; B[4..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex5" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..7] ; Input ; Info     ; Stuck at GND                        ;
+; B[3..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[6]     ; Input ; Info     ; Stuck at VCC                        ;
+; B[5]     ; Input ; Info     ; Stuck at GND                        ;
+; B[4]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex4" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..7] ; Input ; Info     ; Stuck at GND                        ;
+; B[5..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[6]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex3" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[5..4]  ; Input ; Info     ; Stuck at VCC                        ;
+; B[10..6] ; Input ; Info     ; Stuck at GND                        ;
+; B[3..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex2" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..6] ; Input ; Info     ; Stuck at GND                        ;
+; B[4..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[5]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex1" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..5] ; Input ; Info     ; Stuck at GND                        ;
+; B[3..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[4]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|reg32_cp:hex0" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..0] ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|inmem:imem" ;
++---------+-------+----------+-----------------------------------+
+; Port    ; Type  ; Severity ; Details                           ;
++---------+-------+----------+-----------------------------------+
+; byteena ; Input ; Info     ; Stuck at VCC                      ;
++---------+-------+----------+-----------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i|lsu:dmem|latch32_cp:sw" ;
++----------+-------+----------+-------------------------------------+
+; Port     ; Type  ; Severity ; Details                             ;
++----------+-------+----------+-------------------------------------+
+; B[10..9] ; Input ; Info     ; Stuck at GND                        ;
+; B[7..0]  ; Input ; Info     ; Stuck at GND                        ;
+; B[11]    ; Input ; Info     ; Stuck at VCC                        ;
+; B[8]     ; Input ; Info     ; Stuck at VCC                        ;
++----------+-------+----------+-------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeline:rv32i"                                                                                  ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; io_sw_i[31..17]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; io_lcd_o[30..11]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_ledg_o[31..9]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_ledr_o[31..18] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex0_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex1_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex2_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex3_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex4_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex5_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex6_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; io_hex7_o[31..7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:13     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Dec 06 23:02:17 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline -c pipeline
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file wrapper.sv
+    Info (12023): Found entity 1: wrapper
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/reg_fetch_decode.sv
+    Info (12023): Found entity 1: reg_fetch_decode
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/reg_decode_execute.sv
+    Info (12023): Found entity 1: reg_decode_execute
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/reg_execute_memory.sv
+    Info (12023): Found entity 1: reg_execute_memory
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/reg_memory_writeback.sv
+    Info (12023): Found entity 1: reg_memory_writeback
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/forward1mux.sv
+    Info (12023): Found entity 1: forward1mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/forward2mux.sv
+    Info (12023): Found entity 1: forward2mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/rs1d_mux.sv
+    Info (12023): Found entity 1: rs1d_mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/rs2d_mux.sv
+    Info (12023): Found entity 1: rs2d_mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/hazard_unit.sv
+    Info (12023): Found entity 1: hazard_unit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/datamem.v
+    Info (12023): Found entity 1: datamem
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/outmem.v
+    Info (12023): Found entity 1: outmem
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/inmem.v
+    Info (12023): Found entity 1: inmem
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/instr_rom.v
+    Info (12023): Found entity 1: instr_rom
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/wb_mux.sv
+    Info (12023): Found entity 1: wb_mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/pipeline.sv
+    Info (12023): Found entity 1: pipeline
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/regfile.sv
+    Info (12023): Found entity 1: regfile
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/reg_dec.sv
+    Info (12023): Found entity 1: reg_dec
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/pc_reg.sv
+    Info (12023): Found entity 1: pc_reg
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/op_b_mux.sv
+    Info (12023): Found entity 1: op_b_mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/op_a_mux.sv
+    Info (12023): Found entity 1: op_a_mux
+Info (12021): Found 6 design units, including 6 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/lsu.sv
+    Info (12023): Found entity 1: lsu
+    Info (12023): Found entity 2: addr_dec
+    Info (12023): Found entity 3: ld_mux
+    Info (12023): Found entity 4: latch32_cp
+    Info (12023): Found entity 5: reg32_cp
+    Info (12023): Found entity 6: ld_sel_mux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/immgen.sv
+    Info (12023): Found entity 1: immGen
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/ctrl_unit.sv
+    Info (12023): Found entity 1: ctrl_unit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/brcomp.sv
+    Info (12023): Found entity 1: brcomp
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/br_mux.sv
+    Info (12023): Found entity 1: br_mux
+Info (12021): Found 2 design units, including 2 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/alu.sv
+    Info (12023): Found entity 1: alu
+    Info (12023): Found entity 2: arith_right_shift
+Info (12021): Found 1 design units, including 1 entities, in source file /users/ngtph/onedrive/university courses/computer architecture (ee4423_tt01)/labs/ms3/src/add4.sv
+    Info (12023): Found entity 1: add4
+Info (12127): Elaborating entity "wrapper" for the top level hierarchy
+Info (12128): Elaborating entity "pipeline" for hierarchy "pipeline:rv32i"
+Info (12128): Elaborating entity "br_mux" for hierarchy "pipeline:rv32i|br_mux:brsel"
+Info (12128): Elaborating entity "pc_reg" for hierarchy "pipeline:rv32i|pc_reg:fetch_address"
+Info (12128): Elaborating entity "add4" for hierarchy "pipeline:rv32i|add4:plus4"
+Info (12128): Elaborating entity "instr_rom" for hierarchy "pipeline:rv32i|instr_rom:fetch_data"
+Warning (10850): Verilog HDL warning at instr_rom.v(8): number of words (184) in memory file does not match the number of elements in the address range [0:2047]
+Warning (10030): Net "mem.data_a" at instr_rom.v(6) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "mem.waddr_a" at instr_rom.v(6) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "mem.we_a" at instr_rom.v(6) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "reg_fetch_decode" for hierarchy "pipeline:rv32i|reg_fetch_decode:decode"
+Info (12128): Elaborating entity "reg_dec" for hierarchy "pipeline:rv32i|reg_dec:regdec"
+Info (12128): Elaborating entity "immGen" for hierarchy "pipeline:rv32i|immGen:iG"
+Info (12128): Elaborating entity "brcomp" for hierarchy "pipeline:rv32i|brcomp:brc"
+Info (12128): Elaborating entity "ctrl_unit" for hierarchy "pipeline:rv32i|ctrl_unit:cu"
+Info (12128): Elaborating entity "regfile" for hierarchy "pipeline:rv32i|regfile:rf"
+Info (12128): Elaborating entity "rs1d_mux" for hierarchy "pipeline:rv32i|rs1d_mux:rd1m"
+Info (12128): Elaborating entity "rs2d_mux" for hierarchy "pipeline:rv32i|rs2d_mux:rd2m"
+Info (12128): Elaborating entity "reg_decode_execute" for hierarchy "pipeline:rv32i|reg_decode_execute:execute"
+Info (12128): Elaborating entity "forward1mux" for hierarchy "pipeline:rv32i|forward1mux:f1m"
+Info (12128): Elaborating entity "forward2mux" for hierarchy "pipeline:rv32i|forward2mux:f2m"
+Info (12128): Elaborating entity "op_a_mux" for hierarchy "pipeline:rv32i|op_a_mux:oam"
+Info (12128): Elaborating entity "op_b_mux" for hierarchy "pipeline:rv32i|op_b_mux:obm"
+Info (12128): Elaborating entity "alu" for hierarchy "pipeline:rv32i|alu:al"
+Info (12128): Elaborating entity "arith_right_shift" for hierarchy "pipeline:rv32i|alu:al|arith_right_shift:ars"
+Info (12128): Elaborating entity "reg_execute_memory" for hierarchy "pipeline:rv32i|reg_execute_memory:memory"
+Info (12128): Elaborating entity "lsu" for hierarchy "pipeline:rv32i|lsu:dmem"
+Info (12128): Elaborating entity "addr_dec" for hierarchy "pipeline:rv32i|lsu:dmem|addr_dec:ad"
+Warning (10230): Verilog HDL assignment warning at lsu.sv(73): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at lsu.sv(74): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at lsu.sv(75): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "latch32_cp" for hierarchy "pipeline:rv32i|lsu:dmem|latch32_cp:sw"
+Info (12128): Elaborating entity "datamem" for hierarchy "pipeline:rv32i|lsu:dmem|datamem:dmem"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "512"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "9"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_byteena_a" = "4"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_c3i1.tdf
+    Info (12023): Found entity 1: altsyncram_c3i1
+Info (12128): Elaborating entity "altsyncram_c3i1" for hierarchy "pipeline:rv32i|lsu:dmem|datamem:dmem|altsyncram:altsyncram_component|altsyncram_c3i1:auto_generated"
+Info (12128): Elaborating entity "outmem" for hierarchy "pipeline:rv32i|lsu:dmem|outmem:omem"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "64"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "6"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_byteena_a" = "4"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_r1i1.tdf
+    Info (12023): Found entity 1: altsyncram_r1i1
+Info (12128): Elaborating entity "altsyncram_r1i1" for hierarchy "pipeline:rv32i|lsu:dmem|outmem:omem|altsyncram:altsyncram_component|altsyncram_r1i1:auto_generated"
+Info (12128): Elaborating entity "inmem" for hierarchy "pipeline:rv32i|lsu:dmem|inmem:imem"
+Info (12128): Elaborating entity "reg32_cp" for hierarchy "pipeline:rv32i|lsu:dmem|reg32_cp:hex0"
+Info (12128): Elaborating entity "ld_mux" for hierarchy "pipeline:rv32i|lsu:dmem|ld_mux:loader"
+Info (12128): Elaborating entity "ld_sel_mux" for hierarchy "pipeline:rv32i|lsu:dmem|ld_sel_mux:lsm"
+Info (12128): Elaborating entity "reg_memory_writeback" for hierarchy "pipeline:rv32i|reg_memory_writeback:writeback"
+Info (12128): Elaborating entity "wb_mux" for hierarchy "pipeline:rv32i|wb_mux:wbm"
+Info (12128): Elaborating entity "hazard_unit" for hierarchy "pipeline:rv32i|hazard_unit:hu"
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/db/pipeline.ram0_instr_rom_8ff00d5e.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276034): Inferred altshift_taps megafunction from the following design logic: "pipeline:rv32i|reg_decode_execute:execute|wb_selE_rtl_0"
+        Info (286033): Parameter NUMBER_OF_TAPS set to 1
+        Info (286033): Parameter TAP_DISTANCE set to 3
+        Info (286033): Parameter WIDTH set to 12
+Info (12130): Elaborated megafunction instantiation "pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0"
+Info (12133): Instantiated megafunction "pipeline:rv32i|reg_decode_execute:execute|altshift_taps:wb_selE_rtl_0" with the following parameter:
+    Info (12134): Parameter "NUMBER_OF_TAPS" = "1"
+    Info (12134): Parameter "TAP_DISTANCE" = "3"
+    Info (12134): Parameter "WIDTH" = "12"
+Info (12021): Found 1 design units, including 1 entities, in source file db/shift_taps_ofm.tdf
+    Info (12023): Found entity 1: shift_taps_ofm
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_7461.tdf
+    Info (12023): Found entity 1: altsyncram_7461
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_gvd.tdf
+    Info (12023): Found entity 1: add_sub_gvd
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_kkf.tdf
+    Info (12023): Found entity 1: cntr_kkf
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_6cc.tdf
+    Info (12023): Found entity 1: cmpr_6cc
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_74h.tdf
+    Info (12023): Found entity 1: cntr_74h
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (144001): Generated suppressed messages file C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/output_files/pipeline.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 4 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[0]"
+    Warning (15610): No output dependent on input pin "KEY[1]"
+    Warning (15610): No output dependent on input pin "KEY[2]"
+    Warning (15610): No output dependent on input pin "KEY[3]"
+Info (21057): Implemented 4931 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 23 input pins
+    Info (21059): Implemented 95 output pins
+    Info (21061): Implemented 4705 logic cells
+    Info (21064): Implemented 108 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 4644 megabytes
+    Info: Processing ended: Wed Dec 06 23:02:37 2023
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:12
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/ngtph/OneDrive/university courses/Computer Architecture (EE4423_TT01)/Labs/MS3/quartus/output_files/pipeline.map.smsg.
+
+
