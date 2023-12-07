@@ -4,7 +4,7 @@ module forward1mux (
 	output [31:0] forward1out
 );
 
-	assign forward1out = (forward1sel == 2'h0) ? rs1_dataE :
-	                     (forward1sel == 2'h1) ? alu_dataM : wb_data;
+	assign forward1out = (forward1sel == 2'b00) ? rs1_dataE :
+	                     (forward1sel == 2'b01) ? alu_dataM : wb_data;
 
 endmodule

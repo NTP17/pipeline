@@ -6,13 +6,13 @@ module pipeline (
 );
 
     logic        br_equal, br_less, br_unsigned, mem_wrenD, mem_wrenE, mem_wrenM, op_a_selD, op_a_selE, op_b_selD, op_b_selE,
-                 rd_wrenD, rd_wrenE, rd_wrenM, rd_wrenW, br_selD, br_selE, flushD, flushE;
+                 rd_wrenD, rd_wrenE, rd_wrenM, rd_wrenW, br_selD, br_selE, stallF, stallD, flushD, flushE;
     logic  [1:0] wb_selD, wb_selE, wb_selM, wb_selW, forward1sel, forward2sel, rs1d_sel, rs2d_sel;
     logic  [2:0] ld_selD, ld_selE, ld_selM;
     logic  [3:0] byte_enD, byte_enE, byte_enM, alu_opD, alu_opE;
     logic  [4:0] rs1_addrD, rs1_addrE, rs2_addrD, rs2_addrE, rd_addrD, rd_addrE, rd_addrM, rd_addrW;
     logic [12:0] next_pc, pcF, pc4F, pcD, pc4D, pcE, pc4E, pc4M, pc4W;
-    logic [31:0] instrF, instrD, immD, immE, rs1_dataD, rs1_dataE, rs1_dataM, rs2_dataD, rs2_dataE, rs2_dataM, operand_a, operand_b,
+    logic [31:0] instrF, instrD, immD, immE, rs1_dataD, rs1_dataE, rs2_dataD, rs2_dataE, operand_a, operand_b,
                  alu_dataE, alu_dataM, alu_dataW, ld_dataM, ld_dataW, wb_data, forward1out, forward2out, forward2outM, rs1d_out, rs2d_out;
 
     //assign pc_debug_o = pcF;
@@ -24,6 +24,7 @@ module pipeline (
 
     pc_reg fetch_address (.clk(clk_i),
                           .rstn(rst_ni),
+                          .en(!stallF),
                           .next_pc(next_pc),
                           .pc(pcF));
 
@@ -36,6 +37,7 @@ module pipeline (
     reg_fetch_decode decode (.clk(clk_i),
                              .sclr(flushD),
                              .aclr(rst_ni),
+                             .en(!stallD),
                              .instrF(instrF),
                              .pcF(pcF),
                              .pc4F(pc4F),
@@ -82,14 +84,16 @@ module pipeline (
                 .rs2_data(rs2_dataD));
 
     rs1d_mux rd1m (.rs1_dataD(rs1_dataD),
-                   .rs1_dataE(rs1_dataE),
-                   .rs1_dataM(rs1_dataM),
+                   .alu_dataE(alu_dataE),
+                   .alu_dataM(alu_dataM),
+                   .ld_dataM(ld_dataM),
                    .rs1d_sel(rs1d_sel),
                    .rs1d_out(rs1d_out));
 
     rs2d_mux rd2m (.rs2_dataD(rs2_dataD),
-                   .rs2_dataE(rs2_dataE),
-                   .rs2_dataM(rs2_dataM),
+                   .alu_dataE(alu_dataE),
+                   .alu_dataM(alu_dataM),
+                   .ld_dataM(ld_dataM),
                    .rs2d_sel(rs2d_sel),
                    .rs2d_out(rs2d_out));
 
@@ -140,7 +144,6 @@ module pipeline (
     forward2mux f2m (.rs2_dataE(rs2_dataE),
                      .alu_dataM(alu_dataM),
                      .wb_data(wb_data),
-                     .ld_dataM(ld_dataM),
                      .forward2sel(forward2sel),
                      .forward2out(forward2out));
 
@@ -169,8 +172,6 @@ module pipeline (
                                .rd_addrE(rd_addrE),
                                .pc4E(pc4E),
                                .alu_dataE(alu_dataE),
-                               .rs1_dataE(rs1_dataE),
-                               .rs2_dataE(rs2_dataE),
 							   .forward2outE(forward2out),
                                .mem_wrenM(mem_wrenM),
                                .rd_wrenM(rd_wrenM),
@@ -180,8 +181,6 @@ module pipeline (
                                .rd_addrM(rd_addrM),
                                .pc4M(pc4M),
                                .alu_dataM(alu_dataM),
-                               .rs1_dataM(rs1_dataM),
-                               .rs2_dataM(rs2_dataM),
 							   .forward2outM(forward2outM));
     
     lsu dmem (.clk_i(clk_i),
@@ -227,6 +226,7 @@ module pipeline (
                 .wb_data(wb_data));
 
     hazard_unit hu (.br_selE(br_selE),
+                    .wb_selE(wb_selE[0]),
                     .wb_selM(wb_selM[0]),
                     .rs1_addrD(rs1_addrD),
                     .rs2_addrD(rs2_addrD),
@@ -238,6 +238,8 @@ module pipeline (
                     .rd_addrM(rd_addrM),
                     .rd_wrenW(rd_wrenW),
                     .rd_addrW(rd_addrW),
+                    .stallF(stallF),
+                    .stallD(stallD),
                     .flushD(flushD),
                     .flushE(flushE),
                     .forward1sel(forward1sel),
